@@ -16,9 +16,9 @@ module.exports.list = (req, res, next) => {
 };
 
 module.exports.create = (req, res, next) => {
-	let major = req.body;
+	let teacher = req.body;
 
-	teacherModel.create(major)
+	teacherModel.create(teacher)
 		.then(
 			newTeacher => {
 				res.json(newTeacher);

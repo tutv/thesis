@@ -7,6 +7,12 @@
 		</div>
 
 		<div class="form-group">
+			<label for="email">Ngày sinh</label>
+			<input id="email" type="email" class="form-control" [(ngModel)]="teacher.email" name="email"
+				   placeholder="thanhld@vnu.edu.vn">
+		</div>
+
+		<div class="form-group">
 			<label for="date">Ngày sinh</label>
 			<input id="date" type="text" class="form-control" [(ngModel)]="teacher.date" name="date"
 				   placeholder="20/11/1984">
@@ -15,7 +21,8 @@
 		<div class="form-group">
 			<label for="major">Đơn vị</label>
 			<select id="major" class="form-control" [(ngModel)]="teacher.major" name="major">
-				<option>{{'Hello'}}</option>
+				<option value="0">Chọn 1 đơn vị</option>
+				<option *ngFor="let m of majors" [value]="m._id">{{m.name}}</option>
 			</select>
 		</div>
 
@@ -30,6 +37,7 @@
 			<tr>
 				<th>STT</th>
 				<th>Tên</th>
+				<th>Email</th>
 				<th>Ngày sinh</th>
 				<th>Đơn vị</th>
 			</tr>
@@ -39,8 +47,9 @@
 			<tr *ngFor="let m of teachers; let i = index;">
 				<td>{{i + 1}}</td>
 				<td>{{m?.name}}</td>
+				<td><a href="mailto:{{m?.email}}">{{m?.email}}</a></td>
 				<td>{{m?.date}}</td>
-				<td>{{m?.number}}</td>
+				<td>{{m.major?.name}}</td>
 			</tr>
 			</tbody>
 		</table>

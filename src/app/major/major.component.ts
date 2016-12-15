@@ -29,6 +29,10 @@ export class MajorComponent implements OnInit {
 	}
 
 	onSubmit() {
+		if (!this.validate()) {
+			return;
+		}
+
 		this.majorSrv.create(this.major)
 			.subscribe(
 				newMajor => {
@@ -40,6 +44,25 @@ export class MajorComponent implements OnInit {
 
 	reset() {
 		this.major = {};
+	}
+
+	validate() {
+		if (!this.major.name) {
+			alert('Vui lòng nhập đầy đủ tên');
+			return false;
+		}
+
+		if (!this.major.date) {
+			alert('Vui lòng nhập ngày thành lập');
+			return false;
+		}
+
+		if (!this.major.number) {
+			alert('Vui lòng nhập số giảng viên');
+			return false;
+		}
+
+		return true;
 	}
 
 }

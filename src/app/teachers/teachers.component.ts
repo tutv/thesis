@@ -15,6 +15,7 @@ export class TeachersComponent implements OnInit {
 
 	constructor(private majorSrv: MajorsService,
 				private teacherSrv: TeachersService) {
+		this.teacher.major = 0;
 	}
 
 	ngOnInit() {
@@ -41,7 +42,17 @@ export class TeachersComponent implements OnInit {
 	}
 
 	onSubmit() {
-		this.majorSrv.create(this.teacher)
+		if (!this.validate()) {
+			return;
+		}
+
+		let majorID = this.teacher.major;
+
+		this.teacher.major = this.majors.find(m => {
+			return (m._id == majorID);
+		});
+
+		this.teacherSrv.create(this.teacher)
 			.subscribe(
 				newTeacher => {
 					this.reset();
@@ -52,6 +63,30 @@ export class TeachersComponent implements OnInit {
 
 	reset() {
 		this.teacher = {};
+	}
+
+	validate() {
+		if (!this.teacher.name) {
+			alert('Vui lòng nhập đầy đủ tên');
+			return false;
+		}
+
+		if (!this.teacher.email) {
+			alert('Vui lòng nhập email');
+			return false;
+		}
+
+		if (!this.teacher.date) {
+			alert('Vui lòng nhập ngày sinh');
+			return false;
+		}
+
+		if (!this.teacher.major) {
+			alert('Vui lòng chọn đơn vị');
+			return false;
+		}
+
+		return true;
 	}
 
 }
