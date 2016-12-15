@@ -28,3 +28,17 @@ module.exports.create = (req, res, next) => {
 			}
 		)
 };
+
+module.exports.remove = (req, res, next) => {
+	let major_id = req.body.id;
+
+	majorModel.remove(major_id)
+		.then(
+			result => {
+				res.json(result);
+			},
+			error => {
+				res.status(500).send('Error');
+			}
+		)
+};

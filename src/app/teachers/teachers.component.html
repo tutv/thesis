@@ -40,6 +40,7 @@
 				<th>Email</th>
 				<th>Ngày sinh</th>
 				<th>Đơn vị</th>
+				<th>Xóa?</th>
 			</tr>
 			</thead>
 
@@ -50,6 +51,9 @@
 				<td><a href="mailto:{{m?.email}}">{{m?.email}}</a></td>
 				<td>{{m?.date}}</td>
 				<td>{{m.major?.name}}</td>
+				<td>
+					<button (click)="onDelete(m._id)" class="btn btn-default btn-group btn-group-sm">&times;</button>
+				</td>
 			</tr>
 			</tbody>
 		</table>

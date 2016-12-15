@@ -22,4 +22,14 @@ export class TeachersService {
 		});
 	}
 
+	public remove(id) {
+		return this.api.request({
+			url: '/teachers/remove',
+			method: 'POST',
+			data: {
+				id: id,
+			}
+		});
+	}
+
 }

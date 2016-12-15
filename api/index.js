@@ -22,9 +22,11 @@ db.then(
 
 		app.get('/majors', majorCtrl.list);
 		app.post('/majors/create', majorCtrl.create);
+		app.post('/majors/remove', majorCtrl.remove);
 
 		app.get('/teachers', teacherCtrl.list);
 		app.post('/teachers/create', teacherCtrl.create);
+		app.post('/teachers/remove', teacherCtrl.remove);
 
 		app.get('/', function (req, res, next) {
 			res.send('Hello');

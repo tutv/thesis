@@ -42,6 +42,20 @@ export class MajorComponent implements OnInit {
 			);
 	}
 
+	onDelete(id) {
+		let r = window.confirm('Bạn chắc chắn muốn xóa?');
+		if (!r) {
+			return;
+		}
+
+		this.majorSrv.remove(id)
+			.subscribe(
+				result => {
+					this.list();
+				}
+			)
+	}
+
 	reset() {
 		this.major = {};
 	}

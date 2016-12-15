@@ -21,4 +21,14 @@ export class MajorsService {
 			data: major
 		});
 	}
+
+	public remove(id) {
+		return this.api.request({
+			url: '/majors/remove',
+			method: 'POST',
+			data: {
+				id: id,
+			}
+		});
+	}
 }

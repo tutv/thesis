@@ -89,4 +89,17 @@ export class TeachersComponent implements OnInit {
 		return true;
 	}
 
+	onDelete(id) {
+		let r = window.confirm('Bạn chắc chắn muốn xóa?');
+		if (!r) {
+			return;
+		}
+
+		this.teacherSrv.remove(id)
+			.subscribe(
+				result => {
+					this.list();
+				}
+			)
+	}
 }
