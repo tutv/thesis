@@ -8,11 +8,16 @@ import {HeaderComponent} from './header/header.component';
 import {Routes, RouterModule} from "@angular/router";
 import {MajorComponent} from './major/major.component';
 import {ApiService} from "./services/api.service";
+import {TeachersComponent} from './teachers/teachers.component';
 
 const appRoutes: Routes = [
 	{
 		path: 'majors',
 		component: MajorComponent
+	},
+	{
+		path: 'teachers',
+		component: TeachersComponent
 	},
 	{
 		path: '',
@@ -25,7 +30,8 @@ const appRoutes: Routes = [
 	declarations: [
 		AppComponent,
 		HeaderComponent,
-		MajorComponent
+		MajorComponent,
+		TeachersComponent
 	],
 	imports: [
 		BrowserModule,

@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 let db = require('./db');
 let majorCtrl = require('./controllers/majors');
+let teacherCtrl = require('./controllers/teachers');
 
 db.then(
 	(database) => {
@@ -22,11 +23,14 @@ db.then(
 		app.get('/majors', majorCtrl.list);
 		app.post('/majors/create', majorCtrl.create);
 
+		app.get('/teachers', teacherCtrl.list);
+		app.post('/teachers/create', teacherCtrl.create);
+
 		app.get('/', function (req, res, next) {
 			res.send('Hello');
 		});
 
-		let port = process.env.HOST_PORT || 3000;
+		let port = process.env.HOST_PORT || 9876;
 
 		app.listen(port, function () {
 			console.log('App listening on port ' + port);
