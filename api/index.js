@@ -20,6 +20,7 @@ db.then(
 		global.db = database;
 
 		app.get('/majors', majorCtrl.list);
+		app.post('/majors/create', majorCtrl.create);
 
 		app.get('/', function (req, res, next) {
 			res.send('Hello');

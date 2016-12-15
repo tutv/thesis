@@ -14,3 +14,17 @@ module.exports.list = (req, res, next) => {
 			}
 		)
 };
+
+module.exports.create = (req, res, next) => {
+	let major = req.body;
+
+	majorModel.create(major)
+		.then(
+			newMajor => {
+				res.json(newMajor);
+			},
+			error => {
+				res.status(500).send('Error');
+			}
+		)
+};
