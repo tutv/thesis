@@ -1,5 +1,5 @@
 <div class="majors">
-	<form class="form" (submit)="onSubmit()">
+	<form class="form" (submit)="onSubmit()" *ngIf="majors.length">
 		<div class="form-group">
 			<label for="name">Tên</label>
 			<input id="name" type="text" class="form-control" [(ngModel)]="teacher.name" name="name"
@@ -31,8 +31,10 @@
 		</div>
 	</form>
 
+	<h2 class="alert alert-warning" *ngIf="!majors.length">Vui lòng tạo ít nhất một đơn vị</h2>
+
 	<div class="list">
-		<table class="table">
+		<table class="table" *ngIf="teachers.length">
 			<thead>
 			<tr>
 				<th>STT</th>
